@@ -1,10 +1,8 @@
 import React from "react";
 import { useState } from "react";
-import Button from "./Button";
+import "./FormDespesa.css";
+
 const FormDespesa = ({ addDespesa }) => {
-  {
-    /* Colocar aqui os use state que vão manipular a lista de despesas*/
-  }
   const [despesa, setDespesa] = useState("");
   const [vencimento, setVencimento] = useState("");
   const [valor, setValor] = useState("");
@@ -28,44 +26,38 @@ const FormDespesa = ({ addDespesa }) => {
     setValor("");
   };
 
-  const setDespesaHandler = (e) => {
-    setDespesa(e.target.value);
-  };
-
-  const setVencimentoHandler = (e) => {
-    setVencimento(e.target.value);
-  };
-
-  const setValorHandler = (e) => {
-    setValor(e.target.value);
-  };
   return (
-    <div className="formDespesas">
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="despesa">Despesa: </label>
+    <div className="form-despesas-container">
+      <form onSubmit={handleSubmit} className="form-despesas">
+        <label htmlFor="despesa">Despesa:</label>
         <input
           type="text"
           id="despesa"
+          className="input-despesa"
           placeholder="Digite o nome da despesa"
           value={despesa}
-          onChange={setDespesaHandler}
+          onChange={(e) => setDespesa(e.target.value)}
         />
-        <label htmlFor="vencimento">Data de vencimento</label>
+        <label htmlFor="vencimento">Data de vencimento:</label>
         <input
           type="date"
           id="vencimento"
+          className="input-vencimento"
           value={vencimento}
-          onChange={setVencimentoHandler}
+          onChange={(e) => setVencimento(e.target.value)}
         />
-        <label htmlFor="valor">Valor</label>
+        <label htmlFor="valor">Valor:</label>
         <input
           type="number"
           id="valor"
+          className="input-valor"
           placeholder="Ex.: 78,50"
           value={valor}
-          onChange={setValorHandler}
+          onChange={(e) => setValor(e.target.value)}
         />
-        <button type="submit">Adicionar</button>{" "}
+        <button type="submit" className="btn-adicionar">
+          Adicionar
+        </button>
       </form>
     </div>
   );

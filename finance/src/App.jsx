@@ -23,32 +23,33 @@ function App() {
   };
 
   return (
-    <>
-      <div>
-        <Button
-          onClick={showFormDespesa}
-          text={viewForm == true ? "Voltar" : "Nova despesa"}
-        />
+    <div className="app-container">
+      <Button
+        onClick={showFormDespesa}
+        text={viewForm ? "Voltar" : "Nova despesa"}
+        className="toggle-button"
+      />
 
-        {viewForm && <FormDespesa addDespesa={addDespesa} />}
-        <ul>
-          {list.map((item) => (
-            <li key={item.id}>
-              <p>
-                <strong>Nome:</strong> {item.name}
-              </p>
-              <p>
-                <strong>Vencimento:</strong> {item.vencimento}
-              </p>
-              <p>
-                <strong>Valor:</strong> R$ {item.valor.toFixed(2)}
-              </p>
-              <hr />
-            </li>
-          ))}
-        </ul>
-      </div>
-    </>
+      {viewForm && (
+        <FormDespesa addDespesa={addDespesa} className="form-container" />
+      )}
+
+      <ul className="despesa-list">
+        {list.map((item) => (
+          <li key={item.id} className="despesa-item">
+            <p className="despesa-nome">
+              <strong>Nome:</strong> {item.name}
+            </p>
+            <p className="despesa-vencimento">
+              <strong>Vencimento:</strong> {item.vencimento}
+            </p>
+            <p className="despesa-valor">
+              <strong>Valor:</strong> R$ {item.valor.toFixed(2)}
+            </p>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
 
